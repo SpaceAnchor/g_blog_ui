@@ -2,9 +2,9 @@
   <div>
     <div class="myAside-container">
       <!-- 网站信息 -->
-      <div v-if="!$common.mobile()" class="card-content1 shadow-box background-opacity">
-        <el-avatar style="margin-top: 20px" class="user-avatar" :size="120" :src="webInfo.avatar"></el-avatar>
-        <div class="web-name">{{webInfo.webName}}</div>
+      <div v-if="!$common.mobile() && userLoggedIn" class="card-content1 shadow-box background-opacity">
+        <el-avatar style="margin-top: 20px" class="user-avatar" :size="120" :src=currentUser.avatar></el-avatar>
+        <div class="user-name">{{ currentUser.username }}</div>
         <div class="web-info">
           <div class="blog-info-box">
             <span>文章</span>
@@ -182,15 +182,23 @@
         recommendArticles: [],
         admires: [],
         showAdmireDialog: false,
-        articleSearch: ""
+        articleSearch: "",
+        userAvatar: "",
+        // userLogin: false,
       }
     },
     computed: {
+      currentUser() {
+        return this.$store.state.currentUser;
+      },
       webInfo() {
         return this.$store.state.webInfo;
       },
       sortInfo() {
         return this.$store.getters.navigationBar;
+      },
+      userLoggedIn() {
+        return this.$store.getters.isLoggedIn;
       }
     },
     created() {
@@ -276,7 +284,7 @@
     z-index: 10;
   }
 
-  .web-name {
+  .user-name {
     font-size: 30px;
     font-weight: bold;
     margin: 20px 0;

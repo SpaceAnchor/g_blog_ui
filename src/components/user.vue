@@ -36,12 +36,12 @@
         <div class="overlay-container">
           <div class="overlay">
             <div class="overlay-panel myCenter overlay-left">
-              <h1>已有帐号？</h1>
+              <h1>已有账号？</h1>
               <p>请登录🚀</p>
               <button class="ghost" @click="signIn()">登录</button>
             </div>
             <div class="overlay-panel myCenter overlay-right">
-              <h1>没有帐号？</h1>
+              <h1>没有账号？</h1>
               <p>立即注册吧😃</p>
               <button class="ghost" @click="signUp()">注册</button>
             </div>
@@ -326,7 +326,7 @@
               this.password = "";
               this.$router.push({path: '/'});
               let userToken = this.$common.encrypt(localStorage.getItem("userToken"));
-              window.open(this.$constant.imBaseURL + "?userToken=" + userToken);
+              // window.open(this.$constant.imBaseURL + "?userToken=" + userToken);
             }
           })
           .catch((error) => {

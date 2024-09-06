@@ -404,7 +404,6 @@
           .then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.$store.commit("loadWebInfo", res.data);
-              console.log(res.data);
               localStorage.setItem("defaultStoreType", res.data.defaultStoreType);
             }
           })

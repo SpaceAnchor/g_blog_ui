@@ -13,6 +13,10 @@ export default new Vuex.Store({
     webInfo: JSON.parse(localStorage.getItem("webInfo") || '{"webName": "", "webTitle": [], "notices": [], "randomCover": [], "footer": "", "backgroundImage": "", "avatar": ""}')
   },
   getters: {
+    isLoggedIn: state => {
+      // 检查 currentUser 对象是否为空
+      return Object.keys(state.currentUser).length !== 0;
+    },
     articleTotal: state => {
       if (state.sortInfo !== null && state.sortInfo.length !== 0) {
         if (state.sortInfo.length === 1) {
