@@ -13,7 +13,7 @@
              @click="listArticle(label)">
           <proTag :info="label.labelName+' '+label.countOfLabel"
                   :color="$constant.before_color_list[Math.floor(Math.random() * 6)]"
-                  style="margin: 12px">
+                  style="margin: 6px">
           </proTag>
         </div>
       </div>
@@ -93,6 +93,9 @@
     },
 
     mounted() {
+      console.log(this.$route.query.sortId);
+      console.log(this.$route.query.labelId);
+         
     },
 
     methods: {

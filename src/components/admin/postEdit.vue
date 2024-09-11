@@ -76,7 +76,7 @@
                        :maxNumber="1"></uploadPicture>
       </el-form-item>
       <el-form-item label="分类" prop="sortId">
-        <el-select v-model="article.sortId" @visible-change="getSortAndLabel" :clearable="true" @change="newLabelTemp" placeholder="请选择分类">
+        <el-select v-model="article.sortId" :clearable="true" @change="newLabelTemp" placeholder="请选择分类">
           <el-option
             v-for="item in sorts"
             :key="item.id"
@@ -85,8 +85,8 @@
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="标签" prop="labelId">
-        <el-select v-model="article.labelId" @visible-change="getSortAndLabel" :clearable="true" placeholder="请选择标签">
+      <el-form-item label="标签" prop="articleLabelList">
+        <el-select multiple :multiple-limit=3 v-model="articleLabelList" @change="showSelect" :clearable="true" placeholder="请选择标签">
           <el-option
             v-for="item in labelsTemp"
             :key="item.id"
@@ -124,11 +124,14 @@
           articleCover: "",
           videoUrl: "",
           sortId: null,
-          labelId: null
+          label1Id: null,
+          label2Id: null,
+          label3Id: null
         },
         sorts: [],
         labels: [],
         labelsTemp: [],
+        articleLabelList: [],
         rules: {
           articleTitle: [
             {required: true, message: '请输入标题', trigger: 'change'}
@@ -180,6 +183,9 @@
     },
 
     methods: {
+      showSelect() {
+        // console.log(this.articleLabelList); 
+      },
       imgAdd(pos, file) {
         let suffix = "";
         if (file.name.lastIndexOf('.') !== -1) {
@@ -272,8 +278,20 @@
       getArticle() {
         this.$http.get(this.$constant.baseURL + "/admin/article/getArticleById", {id: this.id}, true)
           .then((res) => {
-            if (!this.$common.isEmpty(res.data)) {
+            if (!this.$common.isEmpty(res.data)) { 
+              console.log(this.articleLabelList);
+                          
               this.article = res.data;
+              if (res.data.label1Id){
+                this.articleLabelList.push(res.data.label1Id)
+              }
+              if (res.data.label2Id){
+                this.articleLabelList.push(res.data.label2Id)
+              }
+              if (res.data.label3Id){
+                this.articleLabelList.push(res.data.label3Id)
+              }
+              this.newLabelTemp();
             }
           })
           .catch((error) => {
@@ -283,9 +301,8 @@
             });
           });
       },
-      newLabelTemp(){
-        this.getSortAndLabel();
-        if (!this.$common.isEmpty(this.article.sortId) && !this.$common.isEmpty(this.labels)) {
+      newLabelTemp(){       
+        if (!this.$common.isEmpty(this.article.sortId) && !this.$common.isEmpty(this.labels)) {        
           this.labelsTemp = this.labels.filter(l => l.sortId === this.article.sortId);
         }
       },
@@ -299,6 +316,15 @@
         }
         this.$refs[formName].validate((valid) => {
           if (valid) {
+            let listLength = this.articleLabelList.length;
+            this.article.label1Id = this.articleLabelList[0];
+            if (listLength  >= 2) {
+              this.article.label2Id = this.articleLabelList[1];
+            }
+            if (listLength === 3) {
+              this.article.label3Id = this.articleLabelList[2];
+            }
+            
             if (this.$common.isEmpty(this.id)) {
               this.saveArticle(this.article, "/article/saveArticle")
             } else {
@@ -319,7 +345,7 @@
           this.getArticle();
         }
       },
-      saveArticle(value, url) {
+      saveArticle(value, url) {       
         this.$confirm('确认保存？', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',

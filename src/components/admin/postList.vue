@@ -31,7 +31,9 @@
       <el-table-column prop="username" label="作者" align="center"></el-table-column>
       <el-table-column prop="articleTitle" label="文章标题" align="center"></el-table-column>
       <el-table-column prop="sort.sortName" label="分类" align="center"></el-table-column>
-      <el-table-column prop="label.labelName" label="标签" align="center"></el-table-column>
+      <el-table-column prop="labels[0].labelName" label="标签1" align="center"></el-table-column>
+      <el-table-column prop="labels[1].labelName" label="标签2" align="center"></el-table-column>
+      <el-table-column prop="labels[2].labelName" label="标签3" align="center"></el-table-column>
       <el-table-column prop="viewCount" label="浏览量" align="center"></el-table-column>
       <el-table-column prop="likeCount" label="点赞数" align="center"></el-table-column>
       <el-table-column label="是否可见" align="center">
@@ -69,7 +71,7 @@
       <el-table-column prop="commentCount" label="评论数" align="center"></el-table-column>
       <el-table-column prop="createTime" label="创建时间" align="center"></el-table-column>
       <el-table-column prop="updateTime" label="最终修改时间" align="center"></el-table-column>
-      <el-table-column label="操作" width="180" align="center">
+      <el-table-column fixed="right" label="操作" width="180" align="center">
         <template slot-scope="scope">
           <el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.row)">编辑</el-button>
           <el-button type="text" icon="el-icon-delete" style="color: var(--orangeRed)" @click="handleDelete(scope.row)">

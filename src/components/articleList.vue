@@ -1,3 +1,5 @@
+<!-- 点击分类标签后的文章列表 -->
+<!-- TODO 将订阅与label分类绑定的按钮放在此页面，而不是从文章进行绑定 -->
 <template>
   <div v-if="!$common.isEmpty(articleList)" class="recent-post-container">
     <div class="article-first">
@@ -121,7 +123,7 @@
         </div>
         <!-- 分类 标签 -->
         <div class="sort-label">
-          <span style="margin-right: 12px"
+          <span style="margin-right: 5px"
                 @click.stop="$router.push({path: '/sort', query: {sortId: article.sortId}})">
             <svg viewBox="0 0 1024 1024" width="15" height="15" style="vertical-align: -3px;">
               <path
@@ -141,7 +143,7 @@
                 fill="#FFA86A"></path>
             </svg> {{ article.sort.sortName }}
           </span>
-          <span @click.stop="$router.push({path: '/sort', query: {sortId: article.sortId, labelId: article.labelId}})">
+          <span @click.stop="$router.push({path: '/sort', query: {sortId: article.sortId, labelId: article.label1Id}})">
             <svg viewBox="0 0 1024 1024" width="15" height="15" style="vertical-align: -3px;">
               <path
                 d="M905.0112 560.4352l-342.784 342.784c-56.7808 56.7808-148.7872 56.7808-205.568 0l-231.5776-231.5776c-56.7808-56.7808-56.7808-148.7872 0-205.568l342.9376-342.9376a114.8928 114.8928 0 0 1 84.224-33.5872l266.3936 7.2192c60.7744 1.6384 109.7216 50.3808 111.5648 111.1552l8.2944 267.8272c1.024 31.6928-11.1104 62.3104-33.4848 84.6848z"
@@ -149,7 +151,29 @@
               <path
                 d="M675.2256 491.4688c-82.176 0-149.0432-66.8672-149.0432-149.0432s66.8672-149.0432 149.0432-149.0432 149.0432 66.8672 149.0432 149.0432-66.8672 149.0432-149.0432 149.0432z m0-192.2048c-23.808 0-43.2128 19.3536-43.2128 43.2128 0 23.808 19.3536 43.2128 43.2128 43.2128 23.808 0 43.2128-19.3536 43.2128-43.2128s-19.4048-43.2128-43.2128-43.2128z"
                 fill="#FFE37B"></path>
-            </svg> {{ article.label.labelName }}
+            </svg> {{ article.labels[0].labelName }}
+          </span>
+          <!-- Label2 -->
+          <span v-if="article.labels[1]" @click.stop="$router.push({path: '/sort', query: {sortId: article.sortId, labelId: article.label2Id}})">
+            <svg viewBox="0 0 1024 1024" width="15" height="15" style="vertical-align: -3px;">
+              <path
+                d="M905.0112 560.4352l-342.784 342.784c-56.7808 56.7808-148.7872 56.7808-205.568 0l-231.5776-231.5776c-56.7808-56.7808-56.7808-148.7872 0-205.568l342.9376-342.9376a114.8928 114.8928 0 0 1 84.224-33.5872l266.3936 7.2192c60.7744 1.6384 109.7216 50.3808 111.5648 111.1552l8.2944 267.8272c1.024 31.6928-11.1104 62.3104-33.4848 84.6848z"
+                fill="#8C7BFD"></path>
+              <path
+                d="M675.2256 491.4688c-82.176 0-149.0432-66.8672-149.0432-149.0432s66.8672-149.0432 149.0432-149.0432 149.0432 66.8672 149.0432 149.0432-66.8672 149.0432-149.0432 149.0432z m0-192.2048c-23.808 0-43.2128 19.3536-43.2128 43.2128 0 23.808 19.3536 43.2128 43.2128 43.2128 23.808 0 43.2128-19.3536 43.2128-43.2128s-19.4048-43.2128-43.2128-43.2128z"
+                fill="#FFE37B"></path>
+            </svg> {{ article.labels[1].labelName }}
+          </span>
+          <!-- Label3 -->
+          <span v-if="article.labels[2]" @click.stop="$router.push({path: '/sort', query: {sortId: article.sortId, labelId: article.label3Id}})">
+            <svg viewBox="0 0 1024 1024" width="15" height="15" style="vertical-align: -3px;">
+              <path
+                d="M905.0112 560.4352l-342.784 342.784c-56.7808 56.7808-148.7872 56.7808-205.568 0l-231.5776-231.5776c-56.7808-56.7808-56.7808-148.7872 0-205.568l342.9376-342.9376a114.8928 114.8928 0 0 1 84.224-33.5872l266.3936 7.2192c60.7744 1.6384 109.7216 50.3808 111.5648 111.1552l8.2944 267.8272c1.024 31.6928-11.1104 62.3104-33.4848 84.6848z"
+                fill="#8C7BFD"></path>
+              <path
+                d="M675.2256 491.4688c-82.176 0-149.0432-66.8672-149.0432-149.0432s66.8672-149.0432 149.0432-149.0432 149.0432 66.8672 149.0432 149.0432-66.8672 149.0432-149.0432 149.0432z m0-192.2048c-23.808 0-43.2128 19.3536-43.2128 43.2128 0 23.808 19.3536 43.2128 43.2128 43.2128 23.808 0 43.2128-19.3536 43.2128-43.2128s-19.4048-43.2128-43.2128-43.2128z"
+                fill="#FFE37B"></path>
+            </svg> {{ article.labels[2].labelName }}
           </span>
         </div>
       </div>
@@ -164,7 +188,7 @@
         type: Array
       }
     },
-    methods: {}
+    methods: {},
   }
 </script>
 
@@ -218,7 +242,7 @@
   .rightImage {
     position: absolute;
     right: 0;
-    text-align: right;
+    /* text-align: right; */
   }
 
   .recent-post-item-post {
@@ -255,15 +279,19 @@
     -webkit-box-orient: vertical;
   }
 
-  .leftImage .sort-label {
+  .sort-label {
     position: absolute;
     bottom: 20px;
-  }
-
-  .rightImage .sort-label {
-    position: absolute;
-    bottom: 20px;
-    right: 35px;
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 5px;
+    width: 90%;
+    max-height: 28px; 
+    overflow: hidden; 
+    transition: max-height 0.3s ease; 
+    background-color: white;
+    border-radius: 5px;
+    line-height: 22px;
   }
 
   .sort-label span {
@@ -275,11 +303,18 @@
     transition: all 0.3s;
     cursor: pointer;
     user-select: none;
+        white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .sort-label span:hover {
     background-color: var(--themeBackground);
     color: var(--white);
+  }
+
+  .sort-label:hover {
+    max-height: 127px; /* 允许四行高度 */
   }
 
   .error-text {

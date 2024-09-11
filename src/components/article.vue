@@ -4,11 +4,7 @@
       <!-- 封面 -->
       <div class="article-head my-animation-slide-top">
         <!-- 背景图片 -->
-        <el-image class="article-image my-el-image"
-                  v-once
-                  lazy
-                  :src="article.articleCover"
-                  fit="cover">
+        <el-image class="article-image my-el-image" v-once lazy :src="article.articleCover" fit="cover">
           <div slot="error" class="image-slot">
             <div class="article-image"></div>
           </div>
@@ -49,8 +45,8 @@
             <span>&nbsp;{{ article.createTime }}</span>
             <span>·</span>
             <svg viewBox="0 0 1024 1024" width="14" height="14" style="vertical-align: -2px;">
-              <path d="M14.656 512a497.344 497.344 0 1 0 994.688 0 497.344 497.344 0 1 0-994.688 0z"
-                    fill="#FF0000"></path>
+              <path d="M14.656 512a497.344 497.344 0 1 0 994.688 0 497.344 497.344 0 1 0-994.688 0z" fill="#FF0000">
+              </path>
               <path
                 d="M374.976 872.64c-48.299-100.032-22.592-157.44 14.421-211.37 40.448-58.966 51.115-117.611 51.115-117.611s31.659 41.386 19.115 106.005c56.149-62.72 66.816-162.133 58.325-200.405 127.317 88.746 181.59 281.002 108.181 423.381C1016 652.501 723.093 323.2 672.277 285.867c16.939 37.333 20.054 100.032-14.101 130.474-58.027-219.84-201.664-265.002-201.664-265.002 16.96 113.536-61.781 237.397-137.344 330.24-2.816-45.163-5.632-76.544-29.483-119.808-5.333 82.176-68.373 149.269-85.29 231.445-22.912 111.637 17.237 193.173 170.581 279.424z"
                 fill="#FFFFFF"></path>
@@ -70,8 +66,8 @@
               <path
                 d="M619.008 632.32l101.888-35.157333-131.754667-76.117334 29.866667 111.274667zM891.904 148.992a61.44 61.44 0 0 0-84.138667 22.528l-19.968 34.133333 106.666667 61.610667 19.968-34.133333a61.781333 61.781333 0 0 0-22.528-84.138667z"
                 fill="#69BAF9"></path>
-              <path d="M775.338667 198.775467l131.669333 76.032-186.026667 322.218666-131.6864-76.032z"
-                    fill="#F7FBFF"></path>
+              <path d="M775.338667 198.775467l131.669333 76.032-186.026667 322.218666-131.6864-76.032z" fill="#F7FBFF">
+              </path>
               <path
                 d="M775.168 198.826667l-5.290667 9.216 59.221334 34.133333a34.133333 34.133333 0 0 1 12.458666 46.592l-139.946666 242.346667a34.133333 34.133333 0 0 1-46.762667 12.629333l-59.050667-34.133333-6.656 11.434666 88.746667 51.2L720.896 597.333333l186.026667-322.56z"
                 fill="#D8E3F0"></path>
@@ -96,12 +92,69 @@
                 fill="#885F44"></path>
             </svg>
             <span>&nbsp;{{ article.likeCount }}</span>
+            <!-- 分类 标签 -->
+            <div class="sort-label">
+              <span style="margin-right: 5px"
+                @click.stop="$router.push({path: '/sort', query: {sortId: article.sortId}})">
+                <svg viewBox="0 0 1024 1024" width="15" height="15" style="vertical-align: -3px;">
+                  <path
+                    d="M179.2 153.6m89.6 0l588.8 0q89.6 0 89.6 89.6l0 486.4q0 89.6-89.6 89.6l-588.8 0q-89.6 0-89.6-89.6l0-486.4q0-89.6 89.6-89.6Z"
+                    fill="#FF9C55"></path>
+                  <path
+                    d="M25.6 193.4208A91.0208 91.0208 0 0 1 116.6208 102.4H382.592a91.0208 91.0208 0 0 1 87.5008 65.9712l24.5504 85.7216h412.7488A91.0208 91.0208 0 0 1 998.4 345.1392v485.4528A91.0208 91.0208 0 0 1 907.3792 921.6H116.608A91.0208 91.0208 0 0 1 25.6 830.5792V193.408z"
+                    fill="#FFD977"></path>
+                  <path
+                    d="M128 665.6m25.6 0l76.8 0q25.6 0 25.6 25.6l0 0q0 25.6-25.6 25.6l-76.8 0q-25.6 0-25.6-25.6l0 0q0-25.6 25.6-25.6Z"
+                    fill="#FFF1C9"></path>
+                  <path
+                    d="M128 768m25.6 0l179.2 0q25.6 0 25.6 25.6l0 0q0 25.6-25.6 25.6l-179.2 0q-25.6 0-25.6-25.6l0 0q0-25.6 25.6-25.6Z"
+                    fill="#FFF1C9"></path>
+                  <path
+                    d="M128 486.4m51.2 0l0 0q51.2 0 51.2 51.2l0 0q0 51.2-51.2 51.2l0 0q-51.2 0-51.2-51.2l0 0q0-51.2 51.2-51.2Z"
+                    fill="#FFA86A"></path>
+                </svg> {{ article.sort.sortName }}
+              </span>
+              <span
+                @click.stop="$router.push({path: '/sort', query: {sortId: article.sortId, labelId: article.label1Id}})">
+                <svg viewBox="0 0 1024 1024" width="15" height="15" style="vertical-align: -3px;">
+                  <path
+                    d="M905.0112 560.4352l-342.784 342.784c-56.7808 56.7808-148.7872 56.7808-205.568 0l-231.5776-231.5776c-56.7808-56.7808-56.7808-148.7872 0-205.568l342.9376-342.9376a114.8928 114.8928 0 0 1 84.224-33.5872l266.3936 7.2192c60.7744 1.6384 109.7216 50.3808 111.5648 111.1552l8.2944 267.8272c1.024 31.6928-11.1104 62.3104-33.4848 84.6848z"
+                    fill="#8C7BFD"></path>
+                  <path
+                    d="M675.2256 491.4688c-82.176 0-149.0432-66.8672-149.0432-149.0432s66.8672-149.0432 149.0432-149.0432 149.0432 66.8672 149.0432 149.0432-66.8672 149.0432-149.0432 149.0432z m0-192.2048c-23.808 0-43.2128 19.3536-43.2128 43.2128 0 23.808 19.3536 43.2128 43.2128 43.2128 23.808 0 43.2128-19.3536 43.2128-43.2128s-19.4048-43.2128-43.2128-43.2128z"
+                    fill="#FFE37B"></path>
+                </svg> {{ article.labels[0].labelName }}
+              </span>
+              <!-- Label2 -->
+              <span v-if="article.labels[1]"
+                @click.stop="$router.push({path: '/sort', query: {sortId: article.sortId, labelId: article.label2Id}})">
+                <svg viewBox="0 0 1024 1024" width="15" height="15" style="vertical-align: -3px;">
+                  <path
+                    d="M905.0112 560.4352l-342.784 342.784c-56.7808 56.7808-148.7872 56.7808-205.568 0l-231.5776-231.5776c-56.7808-56.7808-56.7808-148.7872 0-205.568l342.9376-342.9376a114.8928 114.8928 0 0 1 84.224-33.5872l266.3936 7.2192c60.7744 1.6384 109.7216 50.3808 111.5648 111.1552l8.2944 267.8272c1.024 31.6928-11.1104 62.3104-33.4848 84.6848z"
+                    fill="#8C7BFD"></path>
+                  <path
+                    d="M675.2256 491.4688c-82.176 0-149.0432-66.8672-149.0432-149.0432s66.8672-149.0432 149.0432-149.0432 149.0432 66.8672 149.0432 149.0432-66.8672 149.0432-149.0432 149.0432z m0-192.2048c-23.808 0-43.2128 19.3536-43.2128 43.2128 0 23.808 19.3536 43.2128 43.2128 43.2128 23.808 0 43.2128-19.3536 43.2128-43.2128s-19.4048-43.2128-43.2128-43.2128z"
+                    fill="#FFE37B"></path>
+                </svg> {{ article.labels[1].labelName }}
+              </span>
+              <!-- Label3 -->
+              <span v-if="article.labels[2]"
+                @click.stop="$router.push({path: '/sort', query: {sortId: article.sortId, labelId: article.label3Id}})">
+                <svg viewBox="0 0 1024 1024" width="15" height="15" style="vertical-align: -3px;">
+                  <path
+                    d="M905.0112 560.4352l-342.784 342.784c-56.7808 56.7808-148.7872 56.7808-205.568 0l-231.5776-231.5776c-56.7808-56.7808-56.7808-148.7872 0-205.568l342.9376-342.9376a114.8928 114.8928 0 0 1 84.224-33.5872l266.3936 7.2192c60.7744 1.6384 109.7216 50.3808 111.5648 111.1552l8.2944 267.8272c1.024 31.6928-11.1104 62.3104-33.4848 84.6848z"
+                    fill="#8C7BFD"></path>
+                  <path
+                    d="M675.2256 491.4688c-82.176 0-149.0432-66.8672-149.0432-149.0432s66.8672-149.0432 149.0432-149.0432 149.0432 66.8672 149.0432 149.0432-66.8672 149.0432-149.0432 149.0432z m0-192.2048c-23.808 0-43.2128 19.3536-43.2128 43.2128 0 23.808 19.3536 43.2128 43.2128 43.2128 23.808 0 43.2128-19.3536 43.2128-43.2128s-19.4048-43.2128-43.2128-43.2128z"
+                    fill="#FFE37B"></path>
+                </svg> {{ article.labels[2].labelName }}
+              </span>
+            </div>
           </div>
         </div>
 
-        <div class="article-info-news"
-             @click="weiYanDialogVisible = true"
-             v-if="!$common.isEmpty($store.state.currentUser) && $store.state.currentUser.id === article.userId">
+        <div class="article-info-news" @click="weiYanDialogVisible = true"
+          v-if="!$common.isEmpty($store.state.currentUser) && $store.state.currentUser.id === article.userId">
           <svg width="30" height="30" viewBox="0 0 1024 1024">
             <path d="M0 0h1024v1024H0V0z" fill="#202425" opacity=".01"></path>
             <path
@@ -117,8 +170,7 @@
       <div style="background: var(--background);">
         <div class="article-container my-animation-slide-bottom">
           <div v-if="!$common.isEmpty(article.videoUrl)" style="margin-bottom: 20px">
-            <videoPlayer :url="{src: $common.decrypt(article.videoUrl)}"
-                         :cover="article.articleCover">
+            <videoPlayer :url="{src: $common.decrypt(article.videoUrl)}" :cover="article.articleCover">
             </videoPlayer>
           </div>
 
@@ -140,9 +192,9 @@
             <span>文章最后更新于 {{ article.updateTime }}</span>
           </div>
           <!-- 分类 -->
-          <div class="article-sort">
-            <span @click="$router.push({path: '/sort', query: {sortId: article.sortId, labelId: article.labelId}})">{{ article.sort.sortName +" ▶ "+ article.label.labelName}}</span>
-          </div>
+          <!-- <div class="article-sort">
+            <span @click="$router.push({path: '/sort', query: {sortId: article.sortId, labelId: article.labelId}})">{{ article.sort.sortName +" ▶ "+ article.labels[0].labelName}}</span>
+          </div> -->
           <!-- 作者信息 -->
           <blockquote>
             <div>
@@ -150,8 +202,7 @@
             </div>
             <div>
               <span>版权&许可请详阅</span>
-              <span style="color: #38f;cursor: pointer"
-                    @click="copyrightDialogVisible = true">
+              <span style="color: #38f;cursor: pointer" @click="copyrightDialogVisible = true">
                 版权声明
               </span>
             </div>
@@ -179,12 +230,8 @@
       <i class="fa fa-align-justify" aria-hidden="true"></i>
     </div>
 
-    <el-dialog title="版权声明"
-               :visible.sync="copyrightDialogVisible"
-               width="80%"
-               :append-to-body="true"
-               class="article-copy"
-               center>
+    <el-dialog title="版权声明" :visible.sync="copyrightDialogVisible" width="80%" :append-to-body="true"
+      class="article-copy" center>
       <div style="display: flex;align-items: center;flex-direction: column">
         <el-avatar shape="square" :size="35" :src="$store.state.webInfo.avatar"></el-avatar>
         <div class="copyright-container">
@@ -214,9 +261,8 @@
             <li>
               许可协议标识：
               <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-                <img alt="知识共享许可协议"
-                     src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"
-                     style="margin-top: 5px">
+                <img alt="知识共享许可协议" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"
+                  style="margin-top: 5px">
               </a>
             </li>
           </ul>
@@ -224,38 +270,22 @@
       </div>
     </el-dialog>
 
-    <el-dialog title="最新进展"
-               :visible.sync="weiYanDialogVisible"
-               width="40%"
-               :append-to-body="true"
-               :close-on-click-modal="false"
-               destroy-on-close
-               center>
+    <el-dialog title="最新进展" :visible.sync="weiYanDialogVisible" width="40%" :append-to-body="true"
+      :close-on-click-modal="false" destroy-on-close center>
       <div>
         <div class="myCenter" style="margin-bottom: 20px">
-          <el-date-picker
-            v-model="newsTime"
-            value-format="yyyy-MM-dd HH:mm:ss"
-            type="datetime"
-            align="center"
+          <el-date-picker v-model="newsTime" value-format="yyyy-MM-dd HH:mm:ss" type="datetime" align="center"
             placeholder="选择日期时间">
           </el-date-picker>
         </div>
-        <commentBox :disableGraffiti="true"
-                    @submitComment="submitWeiYan">
+        <commentBox :disableGraffiti="true" @submitComment="submitWeiYan">
         </commentBox>
       </div>
     </el-dialog>
 
     <!-- 微信 -->
-    <el-dialog title="密码"
-               :modal="false"
-               :visible.sync="showPasswordDialog"
-               width="25%"
-               :append-to-body="true"
-               :close-on-click-modal="false"
-               destroy-on-close
-               center>
+    <el-dialog title="密码" :modal="false" :visible.sync="showPasswordDialog" width="25%" :append-to-body="true"
+      :close-on-click-modal="false" destroy-on-close center>
       <div>
         <div>
           <div class="password-content">{{tips}}</div>
@@ -264,10 +294,8 @@
           <el-input maxlength="30" v-model="password"></el-input>
         </div>
         <div style="display: flex;justify-content: center">
-          <proButton :info="'提交'"
-                     @click.native="submitPassword()"
-                     :before="$constant.before_color_2"
-                     :after="$constant.after_color_2">
+          <proButton :info="'提交'" @click.native="submitPassword()" :before="$constant.before_color_2"
+            :after="$constant.after_color_2">
           </proButton>
         </div>
       </div>
@@ -276,175 +304,149 @@
 </template>
 
 <script>
-  const myFooter = () => import( "./common/myFooter");
-  const comment = () => import( "./comment/comment");
-  const process = () => import( "./common/process");
-  const commentBox = () => import( "./comment/commentBox");
-  const proButton = () => import( "./common/proButton");
-  const videoPlayer = () => import( "./common/videoPlayer");
-  import MarkdownIt from 'markdown-it';
+const myFooter = () => import("./common/myFooter");
+const comment = () => import("./comment/comment");
+const process = () => import("./common/process");
+const commentBox = () => import("./comment/commentBox");
+const proButton = () => import("./common/proButton");
+const videoPlayer = () => import("./common/videoPlayer");
+import MarkdownIt from 'markdown-it';
 
-  export default {
-    components: {
-      myFooter,
-      comment,
-      commentBox,
-      proButton,
-      process,
-      videoPlayer
-    },
+export default {
+  components: {
+    myFooter,
+    comment,
+    commentBox,
+    proButton,
+    process,
+    videoPlayer
+  },
 
-    data() {
-      return {
-        id: this.$route.params.id,
-        subscribe: false,
-        article: {},
-        articleContentHtml: "",
-        treeHoleList: [],
-        weiYanDialogVisible: false,
-        copyrightDialogVisible: false,
-        newsTime: "",
-        showPasswordDialog: false,
-        password: "",
-        tips: "",
-        scrollTop: 0
-      };
-    },
-    created() {
-      if (!this.$common.isEmpty(this.id)) {
-        this.getArticle(localStorage.getItem("article_password_" + this.id));
+  data () {
+    return {
+      id: this.$route.params.id,
+      subscribe: false,
+      article: {},
+      articleContentHtml: "",
+      treeHoleList: [],
+      weiYanDialogVisible: false,
+      copyrightDialogVisible: false,
+      newsTime: "",
+      showPasswordDialog: false,
+      password: "",
+      tips: "",
+      scrollTop: 0
+    };
+  },
+  created () {
+    if (!this.$common.isEmpty(this.id)) {
+      this.getArticle(localStorage.getItem("article_password_" + this.id));
 
-        if ("0" !== localStorage.getItem("showSubscribe")) {
-          this.$notify({
-            title: '文章订阅',
-            type: 'success',
-            message: '点击文章下方小手 - 订阅/取消订阅专栏（标签）',
-            duration: 0,
-            onClose: () => localStorage.setItem("showSubscribe", "0")
-          });
-        }
+      if ("0" !== localStorage.getItem("showSubscribe")) {
+        this.$notify({
+          title: '文章订阅',
+          type: 'success',
+          message: '点击文章下方小手 - 订阅/取消订阅专栏（标签）',
+          duration: 0,
+          onClose: () => localStorage.setItem("showSubscribe", "0")
+        });
+      }
+    }
+  },
+  mounted () {
+    window.addEventListener("scroll", this.onScrollPage);
+  },
+  destroyed () {
+    window.removeEventListener("scroll", this.onScrollPage);
+  },
+  watch: {
+    scrollTop (scrollTop, oldScrollTop) {
+      let isShow = scrollTop - window.innerHeight > 30;
+      if (isShow) {
+        $("#toc-button").css("bottom", "14.1vh");
+      } else {
+        $("#toc-button").css("bottom", "8vh");
       }
     },
-    mounted() {
-      window.addEventListener("scroll", this.onScrollPage);
+  },
+  methods: {
+    clickTocButton () {
+      let display = $(".toc");
+      if ("none" === display.css("display")) {
+        display.css("display", "unset");
+      } else {
+        display.css("display", "none");
+      }
     },
-    destroyed() {
-      window.removeEventListener("scroll", this.onScrollPage);
-    },
-    watch: {
-      scrollTop(scrollTop, oldScrollTop) {
-        let isShow = scrollTop - window.innerHeight > 30;
-        if (isShow) {
-          $("#toc-button").css("bottom", "14.1vh");
-        } else {
-          $("#toc-button").css("bottom", "8vh");
-        }
-      },
-    },
-    methods: {
-      clickTocButton() {
-        let display = $(".toc");
-        if ("none" === display.css("display")) {
-          display.css("display", "unset");
-        } else {
-          display.css("display", "none");
-        }
-      },
-      subscribeLabel() {
-        if (this.$common.isEmpty(this.$store.state.currentUser)) {
-          this.$message({
-            message: "请先登录！",
-            type: "error"
-          });
-          return;
-        }
-
-        this.$confirm('确认' + (this.subscribe ? '取消订阅' : '订阅') + '专栏【' + this.article.label.labelName + '】？' + (this.subscribe ? "" : "订阅专栏后，该专栏发布新文章将通过邮件通知订阅用户。"), this.subscribe ? "取消订阅" : "文章订阅", {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          center: true
-        }).then(() => {
-          this.$http.get(this.$constant.baseURL + "/user/subscribe", {
-            labelId: this.article.labelId,
-            flag: !this.subscribe
-          })
-            .then((res) => {
-              if (!this.$common.isEmpty(res.data)) {
-                this.$store.commit("loadCurrentUser", res.data);
-              }
-              this.subscribe = !this.subscribe;
-            })
-            .catch((error) => {
-              this.$message({
-                message: error.message,
-                type: "error"
-              });
-            });
-        }).catch(() => {
-          this.$message({
-            type: 'success',
-            message: '已取消!'
-          });
+    subscribeLabel () {
+      if (this.$common.isEmpty(this.$store.state.currentUser)) {
+        this.$message({
+          message: "请先登录！",
+          type: "error"
         });
-      },
-      submitPassword() {
-        if (this.$common.isEmpty(this.password)) {
-          this.$message({
-            message: "请先输入密码！",
-            type: "error"
-          });
-          return;
-        }
+        return;
+      }
 
-        this.getArticle(this.password);
-      },
-      deleteTreeHole(id) {
-        if (this.$common.isEmpty(this.$store.state.currentUser)) {
-          this.$message({
-            message: "请先登录！",
-            type: "error"
-          });
-          return;
-        }
-
-        this.$confirm('确认删除？', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'success',
-          center: true
-        }).then(() => {
-          this.$http.get(this.$constant.baseURL + "/weiYan/deleteWeiYan", {id: id})
-            .then((res) => {
-              this.$message({
-                type: 'success',
-                message: '删除成功!'
-              });
-              this.getNews();
-            })
-            .catch((error) => {
-              this.$message({
-                message: error.message,
-                type: "error"
-              });
-            });
-        }).catch(() => {
-          this.$message({
-            type: 'success',
-            message: '已取消删除!'
-          });
-        });
-      },
-      submitWeiYan(content) {
-        let weiYan = {
-          content: content,
-          createTime: this.newsTime,
-          source: this.article.id
-        };
-
-        this.$http.post(this.$constant.baseURL + "/weiYan/saveNews", weiYan)
+      this.$confirm('确认' + (this.subscribe ? '取消订阅' : '订阅') + '专栏【' + this.article.label.labelName + '】？' + (this.subscribe ? "" : "订阅专栏后，该专栏发布新文章将通过邮件通知订阅用户。"), this.subscribe ? "取消订阅" : "文章订阅", {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        center: true
+      }).then(() => {
+        this.$http.get(this.$constant.baseURL + "/user/subscribe", {
+          labelId: this.article.labelId,
+          flag: !this.subscribe
+        })
           .then((res) => {
-            this.weiYanDialogVisible = false;
-            this.newsTime = "";
+            if (!this.$common.isEmpty(res.data)) {
+              this.$store.commit("loadCurrentUser", res.data);
+            }
+            this.subscribe = !this.subscribe;
+          })
+          .catch((error) => {
+            this.$message({
+              message: error.message,
+              type: "error"
+            });
+          });
+      }).catch(() => {
+        this.$message({
+          type: 'success',
+          message: '已取消!'
+        });
+      });
+    },
+    submitPassword () {
+      if (this.$common.isEmpty(this.password)) {
+        this.$message({
+          message: "请先输入密码！",
+          type: "error"
+        });
+        return;
+      }
+
+      this.getArticle(this.password);
+    },
+    deleteTreeHole (id) {
+      if (this.$common.isEmpty(this.$store.state.currentUser)) {
+        this.$message({
+          message: "请先登录！",
+          type: "error"
+        });
+        return;
+      }
+
+      this.$confirm('确认删除？', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'success',
+        center: true
+      }).then(() => {
+        this.$http.get(this.$constant.baseURL + "/weiYan/deleteWeiYan", { id: id })
+          .then((res) => {
+            this.$message({
+              type: 'success',
+              message: '删除成功!'
+            });
             this.getNews();
           })
           .catch((error) => {
@@ -453,379 +455,414 @@
               type: "error"
             });
           });
-      },
-      getNews() {
-        this.$http.post(this.$constant.baseURL + "/weiYan/listNews", {
-          current: 1,
-          size: 9999,
-          source: this.article.id
-        })
-          .then((res) => {
-            if (!this.$common.isEmpty(res.data)) {
-              res.data.records.forEach(c => {
-                c.content = c.content.replace(/\n{2,}/g, '<div style="height: 12px"></div>');
-                c.content = c.content.replace(/\n/g, '<br/>');
-                c.content = this.$common.faceReg(c.content);
-                c.content = this.$common.pictureReg(c.content);
-              });
-              this.treeHoleList = res.data.records;
-            }
-          })
-          .catch((error) => {
-            this.$message({
-              message: error.message,
-              type: "error"
-            });
-          });
-      },
-      onScrollPage() {
-        this.scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        if (this.scrollTop < (window.innerHeight / 4)) {
-          $(".toc").css("top", window.innerHeight / 4);
-        } else {
-          $(".toc").css("top", "90px");
-        }
-      },
-      getTocbot() {
-        let script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = this.$constant.tocbot;
-        document.getElementsByTagName('head')[0].appendChild(script);
+      }).catch(() => {
+        this.$message({
+          type: 'success',
+          message: '已取消删除!'
+        });
+      });
+    },
+    submitWeiYan (content) {
+      let weiYan = {
+        content: content,
+        createTime: this.newsTime,
+        source: this.article.id
+      };
 
-        // 引入成功
-        script.onload = function () {
-          tocbot.init({
-            tocSelector: '#toc',
-            contentSelector: '.entry-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            scrollSmooth: true,
-            fixedSidebarOffset: 'auto',
-            scrollSmoothOffset: -100,
-            hasInnerContainers: false
+      this.$http.post(this.$constant.baseURL + "/weiYan/saveNews", weiYan)
+        .then((res) => {
+          this.weiYanDialogVisible = false;
+          this.newsTime = "";
+          this.getNews();
+        })
+        .catch((error) => {
+          this.$message({
+            message: error.message,
+            type: "error"
           });
-        }
-        if (this.$common.mobile()) {
-          $(".toc").css("display", "none");
-        }
-      },
-      addId() {
-        let headings = $(".entry-content").find("h1, h2, h3, h4, h5, h6");
-        headings.attr('id', (i, id) => id || 'toc-' + i);
-      },
-      getArticle(password) {
-        this.$http.get(this.$constant.baseURL + "/article/getArticleById", {id: this.id, password: password})
-          .then((res) => {
-            if (!this.$common.isEmpty(res.data)) {
-              this.article = res.data;
-              this.getNews();
-              const md = new MarkdownIt({breaks: true}).use(require('markdown-it-multimd-table'));
-              this.articleContentHtml = md.render(this.article.articleContent);
-              this.$nextTick(() => {
-                this.$common.imgShow(".entry-content img");
-                this.highlight();
-                this.addId();
-                this.getTocbot();
-              });
-              if (!this.$common.isEmpty(password)) {
-                localStorage.setItem("article_password_" + this.id, password);
-              }
-              this.showPasswordDialog = false;
-              if (!this.$common.isEmpty(this.$store.state.currentUser) && !this.$common.isEmpty(this.$store.state.currentUser.subscribe)) {
-                this.subscribe = JSON.parse(this.$store.state.currentUser.subscribe).includes(this.article.labelId);
-              }
+        });
+    },
+    getNews () {
+      this.$http.post(this.$constant.baseURL + "/weiYan/listNews", {
+        current: 1,
+        size: 9999,
+        source: this.article.id
+      })
+        .then((res) => {
+          if (!this.$common.isEmpty(res.data)) {
+            res.data.records.forEach(c => {
+              c.content = c.content.replace(/\n{2,}/g, '<div style="height: 12px"></div>');
+              c.content = c.content.replace(/\n/g, '<br/>');
+              c.content = this.$common.faceReg(c.content);
+              c.content = this.$common.pictureReg(c.content);
+            });
+            this.treeHoleList = res.data.records;
+          }
+        })
+        .catch((error) => {
+          this.$message({
+            message: error.message,
+            type: "error"
+          });
+        });
+    },
+    onScrollPage () {
+      this.scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      if (this.scrollTop < (window.innerHeight / 4)) {
+        $(".toc").css("top", window.innerHeight / 4);
+      } else {
+        $(".toc").css("top", "90px");
+      }
+    },
+    getTocbot () {
+      let script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = this.$constant.tocbot;
+      document.getElementsByTagName('head')[0].appendChild(script);
+
+      // 引入成功
+      script.onload = function () {
+        tocbot.init({
+          tocSelector: '#toc',
+          contentSelector: '.entry-content',
+          headingSelector: 'h1, h2, h3, h4, h5',
+          scrollSmooth: true,
+          fixedSidebarOffset: 'auto',
+          scrollSmoothOffset: -100,
+          hasInnerContainers: false
+        });
+      }
+      if (this.$common.mobile()) {
+        $(".toc").css("display", "none");
+      }
+    },
+    addId () {
+      let headings = $(".entry-content").find("h1, h2, h3, h4, h5, h6");
+      headings.attr('id', (i, id) => id || 'toc-' + i);
+    },
+    getArticle (password) {
+      this.$http.get(this.$constant.baseURL + "/article/getArticleById", { id: this.id, password: password })
+        .then((res) => {
+          if (!this.$common.isEmpty(res.data)) {
+            this.article = res.data;
+            this.getNews();
+            const md = new MarkdownIt({ breaks: true }).use(require('markdown-it-multimd-table'));
+            this.articleContentHtml = md.render(this.article.articleContent);
+            this.$nextTick(() => {
+              this.$common.imgShow(".entry-content img");
+              this.highlight();
+              this.addId();
+              this.getTocbot();
+            });
+            if (!this.$common.isEmpty(password)) {
+              localStorage.setItem("article_password_" + this.id, password);
             }
-          })
-          .catch((error) => {
-            if ("密码错误" === error.message.substr(0, 4)) {
-              if (!this.$common.isEmpty(password)) {
-                localStorage.removeItem("article_password_" + this.id);
-                this.$message({
-                  message: "密码错误，请重新输入！",
-                  type: "error",
-                  customClass: "message-index"
-                });
-              }
-              this.tips = error.message.substr(4);
-              this.showPasswordDialog = true;
-            } else {
+            this.showPasswordDialog = false;
+            if (!this.$common.isEmpty(this.$store.state.currentUser) && !this.$common.isEmpty(this.$store.state.currentUser.subscribe)) {
+              this.subscribe = JSON.parse(this.$store.state.currentUser.subscribe).includes(this.article.labelId);
+            }
+          }
+        })
+        .catch((error) => {
+          if ("密码错误" === error.message.substr(0, 4)) {
+            if (!this.$common.isEmpty(password)) {
+              localStorage.removeItem("article_password_" + this.id);
               this.$message({
-                message: error.message,
+                message: "密码错误，请重新输入！",
                 type: "error",
                 customClass: "message-index"
               });
-              this.tips = error.message;
-              this.showPasswordDialog = true;
             }
-          });
-      },
-      highlight() {
-        let attributes = {
-          autocomplete: "off",
-          autocorrect: "off",
-          autocapitalize: "off",
-          spellcheck: "false",
-          contenteditable: "false"
-        };
-
-        $("pre").each(function (i, item) {
-          let preCode = $(item).children("code");
-          let classNameStr = preCode[0].className;
-          let classNameArr = classNameStr.split(" ");
-
-          let lang = "";
-          classNameArr.some(function (className) {
-            if (className.indexOf("language-") > -1) {
-              lang = className.substring(className.indexOf("-") + 1, className.length);
-              return true;
-            }
-          });
-
-          // 检测语言是否存在，不存在则自动检测
-          let language = hljs.getLanguage(lang.toLowerCase());
-          if (language === undefined) {
-            // 启用自动检测
-            let autoLanguage = hljs.highlightAuto(preCode.text());
-            preCode.removeClass("language-" + lang);
-            lang = autoLanguage.language;
-            if (lang === undefined) {
-              lang = "java";
-            }
-            preCode.addClass("language-" + lang);
+            this.tips = error.message.substr(4);
+            this.showPasswordDialog = true;
           } else {
-            lang = language.name;
+            this.$message({
+              message: error.message,
+              type: "error",
+              customClass: "message-index"
+            });
+            this.tips = error.message;
+            this.showPasswordDialog = true;
           }
+        });
+    },
+    highlight () {
+      let attributes = {
+        autocomplete: "off",
+        autocorrect: "off",
+        autocapitalize: "off",
+        spellcheck: "false",
+        contenteditable: "false"
+      };
 
-          $(item).addClass("highlight-wrap");
-          $(item).attr(attributes);
-          preCode.attr("data-rel", lang.toUpperCase()).addClass(lang.toLowerCase());
-          // 启用代码高亮
-          hljs.highlightBlock(preCode[0]);
-          // 启用代码行号
-          hljs.lineNumbersBlock(preCode[0]);
+      $("pre").each(function (i, item) {
+        let preCode = $(item).children("code");
+        let classNameStr = preCode[0].className;
+        let classNameArr = classNameStr.split(" ");
+
+        let lang = "";
+        classNameArr.some(function (className) {
+          if (className.indexOf("language-") > -1) {
+            lang = className.substring(className.indexOf("-") + 1, className.length);
+            return true;
+          }
         });
 
-        $("pre code").each(function (i, block) {
-          $(block).attr({
-            id: "hljs-" + i,
-          });
-
-          $(block).after(
-            '<a class="copy-code" href="javascript:" data-clipboard-target="#hljs-' +
-            i +
-            '"><i class="fa fa-clipboard" aria-hidden="true"></i></a>'
-          );
-          new ClipboardJS(".copy-code");
-        });
-
-        if ($(".entry-content").children("table").length > 0) {
-          $(".entry-content")
-            .children("table")
-            .wrap("<div class='table-wrapper'></div>");
+        // 检测语言是否存在，不存在则自动检测
+        let language = hljs.getLanguage(lang.toLowerCase());
+        if (language === undefined) {
+          // 启用自动检测
+          let autoLanguage = hljs.highlightAuto(preCode.text());
+          preCode.removeClass("language-" + lang);
+          lang = autoLanguage.language;
+          if (lang === undefined) {
+            lang = "java";
+          }
+          preCode.addClass("language-" + lang);
+        } else {
+          lang = language.name;
         }
+
+        $(item).addClass("highlight-wrap");
+        $(item).attr(attributes);
+        preCode.attr("data-rel", lang.toUpperCase()).addClass(lang.toLowerCase());
+        // 启用代码高亮
+        hljs.highlightBlock(preCode[0]);
+        // 启用代码行号
+        hljs.lineNumbersBlock(preCode[0]);
+      });
+
+      $("pre code").each(function (i, block) {
+        $(block).attr({
+          id: "hljs-" + i,
+        });
+
+        $(block).after(
+          '<a class="copy-code" href="javascript:" data-clipboard-target="#hljs-' +
+          i +
+          '"><i class="fa fa-clipboard" aria-hidden="true"></i></a>'
+        );
+        new ClipboardJS(".copy-code");
+      });
+
+      if ($(".entry-content").children("table").length > 0) {
+        $(".entry-content")
+          .children("table")
+          .wrap("<div class='table-wrapper'></div>");
       }
     }
   }
+}
 </script>
 
 <style scoped>
+.article-head {
+  height: 40vh;
+  position: relative;
+}
 
-  .article-head {
-    height: 40vh;
-    position: relative;
-  }
+.article-image::before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--miniMask);
+  content: "";
+}
 
-  .article-image::before {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: var(--miniMask);
-    content: "";
-  }
+.article-info-container {
+  width: 100%;
+  background: rgba(200, 200, 200, 0.5);
+  position: absolute;
+  bottom: 10px;
+  padding: 10px 20%;
+  color: var(--white);
+}
 
+.article-info-news {
+  position: absolute;
+  bottom: 10px;
+  right: 20%;
+  cursor: pointer;
+  animation: scale 1s ease-in-out infinite;
+}
+
+.article-title {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.article-info {
+  font-size: 14px;
+  user-select: none;
+}
+
+.article-info i {
+  margin-right: 6px;
+}
+
+.article-info span:not(:last-child) {
+  margin-right: 5px;
+}
+
+.article-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.article-update-time {
+  color: var(--greyFont);
+  font-size: 12px;
+  margin: 20px 0;
+  user-select: none;
+}
+
+.sort-label {
+  margin-top: 10px;
+}
+
+.sort-label span {
+  cursor: pointer;
+}
+
+blockquote {
+  line-height: 2;
+  border-left: 0.2rem solid var(--blue);
+  padding: 10px 1rem;
+  background-color: var(--azure);
+  border-radius: 4px;
+  margin: 0 0 40px 0;
+  user-select: none;
+  color: var(--black);
+}
+
+.article-sort {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.article-sort span {
+  padding: 3px 10px;
+  background-color: var(--themeBackground);
+  border-radius: 5px;
+  font-size: 14px;
+  color: var(--white);
+  transition: all 0.3s;
+  margin-right: 25px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.article-sort span:hover {
+  background-color: var(--red);
+}
+
+.article-like {
+  color: var(--red) !important;
+}
+
+.article-like-icon {
+  font-size: 60px;
+  cursor: pointer;
+  color: var(--greyFont);
+  transition: all 0.5s;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.article-like-icon:hover {
+  transform: rotate(360deg);
+}
+
+.process-wrap {
+  margin: 0 0 40px;
+}
+
+.process-wrap hr {
+  position: relative;
+  margin: 10px auto 60px;
+  border: 2px dashed var(--lightGreen);
+  overflow: visible;
+}
+
+.process-wrap hr:before {
+  position: absolute;
+  top: -14px;
+  left: 5%;
+  color: var(--lightGreen);
+  content: "❄";
+  font-size: 30px;
+  line-height: 1;
+  transition: all 1s ease-in-out;
+}
+
+.process-wrap hr:hover:before {
+  left: calc(95% - 20px);
+}
+
+.process-wrap >>> .el-collapse-item__header {
+  border-bottom: unset;
+  font-size: 20px;
+  background-color: var(--background);
+  color: var(--lightGreen);
+}
+
+.process-wrap >>> .el-collapse-item__wrap {
+  background-color: var(--background);
+}
+
+.process-wrap .el-collapse {
+  border-top: unset;
+  border-bottom: unset;
+}
+
+.process-wrap >>> .el-collapse-item__wrap {
+  border-bottom: unset;
+}
+
+.password-content {
+  font-size: 13px;
+  color: var(--maxGreyFont);
+  line-height: 1.5;
+}
+
+#toc-button {
+  position: fixed;
+  right: 3vh;
+  bottom: 8vh;
+  animation: slide-bottom 0.5s ease-in-out both;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 23px;
+  width: 30px;
+}
+
+#toc-button:hover {
+  color: var(--themeBackground);
+}
+
+.copyright-container {
+  color: var(--black);
+  line-height: 2.5;
+  padding: 0 30px 10px;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 700px) {
   .article-info-container {
-    position: absolute;
-    bottom: 15px;
-    left: 20%;
-    color: var(--white);
+    left: 20px;
+    max-width: 320px;
   }
 
   .article-info-news {
-    position: absolute;
-    bottom: 10px;
-    right: 20%;
-    cursor: pointer;
-    animation: scale 1s ease-in-out infinite;
+    right: 20px;
   }
+}
 
-  .article-title {
-    font-size: 28px;
-    margin-bottom: 15px;
-  }
-
-  .article-info {
-    font-size: 14px;
-    user-select: none;
-  }
-
-  .article-info i {
-    margin-right: 6px;
-  }
-
-  .article-info span:not(:last-child) {
-    margin-right: 5px;
-  }
-
-  .article-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px;
-  }
-
-  .article-update-time {
-    color: var(--greyFont);
-    font-size: 12px;
-    margin: 20px 0;
-    user-select: none;
-  }
-
-  blockquote {
-    line-height: 2;
-    border-left: 0.2rem solid var(--blue);
-    padding: 10px 1rem;
-    background-color: var(--azure);
-    border-radius: 4px;
-    margin: 0 0 40px 0;
-    user-select: none;
-    color: var(--black);
-  }
-
-  .article-sort {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 20px;
-  }
-
-  .article-sort span {
-    padding: 3px 10px;
-    background-color: var(--themeBackground);
-    border-radius: 5px;
-    font-size: 14px;
-    color: var(--white);
-    transition: all 0.3s;
-    margin-right: 25px;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .article-sort span:hover {
-    background-color: var(--red);
-  }
-
-  .article-like {
-    color: var(--red) !important;
-  }
-
-  .article-like-icon {
-    font-size: 60px;
-    cursor: pointer;
-    color: var(--greyFont);
-    transition: all 0.5s;
-    border-radius: 50%;
-    margin-bottom: 20px;
-  }
-
-  .article-like-icon:hover {
-    transform: rotate(360deg);
-  }
-
-  .process-wrap {
-    margin: 0 0 40px;
-  }
-
-  .process-wrap hr {
-    position: relative;
-    margin: 10px auto 60px;
-    border: 2px dashed var(--lightGreen);
-    overflow: visible;
-  }
-
-  .process-wrap hr:before {
-    position: absolute;
-    top: -14px;
-    left: 5%;
-    color: var(--lightGreen);
-    content: '❄';
-    font-size: 30px;
-    line-height: 1;
-    transition: all 1s ease-in-out;
-  }
-
-  .process-wrap hr:hover:before {
-    left: calc(95% - 20px);
-  }
-
-  .process-wrap >>> .el-collapse-item__header {
-    border-bottom: unset;
-    font-size: 20px;
-    background-color: var(--background);
-    color: var(--lightGreen);
-  }
-
-  .process-wrap >>> .el-collapse-item__wrap {
-    background-color: var(--background);
-  }
-
-  .process-wrap .el-collapse {
-    border-top: unset;
-    border-bottom: unset;
-  }
-
-  .process-wrap >>> .el-collapse-item__wrap {
-    border-bottom: unset;
-  }
-
-  .password-content {
-    font-size: 13px;
-    color: var(--maxGreyFont);
-    line-height: 1.5;
-  }
-
+@media screen and (max-width: 400px) {
   #toc-button {
-    position: fixed;
-    right: 3vh;
-    bottom: 8vh;
-    animation: slide-bottom 0.5s ease-in-out both;
-    z-index: 100;
-    cursor: pointer;
-    font-size: 23px;
-    width: 30px;
+    right: 0.5vh;
   }
-
-  #toc-button:hover {
-    color: var(--themeBackground);
-  }
-
-  .copyright-container {
-    color: var(--black);
-    line-height: 2.5;
-    padding: 0 30px 10px;
-    font-size: 16px;
-  }
-
-  @media screen and (max-width: 700px) {
-    .article-info-container {
-      left: 20px;
-      max-width: 320px;
-    }
-
-    .article-info-news {
-      right: 20px;
-    }
-  }
-
-  @media screen and (max-width: 400px) {
-    #toc-button {
-      right: 0.5vh;
-    }
-  }
+}
 </style>
