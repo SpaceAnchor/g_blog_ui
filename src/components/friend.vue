@@ -73,26 +73,16 @@
         </div>
 
         <hr>
-
-        <h2 style="margin-top: 60px">♥️青出于蓝</h2>
-        <card :resourcePathList="friendList['♥️青出于蓝']" @clickResourcePath="clickFriend"></card>
-
-        <hr>
-
-        <h2 style="margin-top: 60px">🥇友情链接</h2>
-        <card :resourcePathList="friendList['🥇友情链接']" @clickResourcePath="clickFriend"></card>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  const card = () => import( "./common/card");
   const proButton = () => import( "./common/proButton");
 
   export default {
     components: {
-      card,
       proButton
     },
 

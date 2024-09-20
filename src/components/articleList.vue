@@ -30,7 +30,7 @@
                     fit="cover">
             <div slot="error" class="image-slot myCenter" style="background-color: var(--lightGreen)">
               <div class="error-text">
-                <div>遇事不决，可问春风</div>
+                <div>{{article.articleTitle}}</div>
               </div>
             </div>
           </el-image>
@@ -318,9 +318,15 @@
   }
 
   .error-text {
-    font-size: 20px;
-    line-height: 1.8;
-    letter-spacing: 8px;
+    height: calc(100% - 20px);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    padding: 20px;
+    font-size: 28px;
+    line-height: 1.4;
+    letter-spacing: 4px;
     color: var(--white);
   }
 

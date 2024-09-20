@@ -149,7 +149,7 @@
             {required: true, message: '是否可见', trigger: 'change'}
           ],
           articleCover: [
-            {required: true, message: '封面', trigger: 'change'}
+            {required: false, message: '封面', trigger: 'change'}
           ],
           sortId: [
             {required: true, message: '分类', trigger: 'change'}
@@ -324,7 +324,9 @@
             if (listLength === 3) {
               this.article.label3Id = this.articleLabelList[2];
             }
-            
+            if (this.article.articleCover == "") {
+              this.article.articleContent = "no cover"
+            }
             if (this.$common.isEmpty(this.id)) {
               this.saveArticle(this.article, "/article/saveArticle")
             } else {
