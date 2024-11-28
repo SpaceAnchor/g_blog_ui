@@ -184,7 +184,7 @@
 
     methods: {
       showSelect() {
-        // console.log(this.articleLabelList); 
+        // console.log(this.articleLabelList);  //123
       },
       imgAdd(pos, file) {
         let suffix = "";
